@@ -1,0 +1,38 @@
+GET https://sandbox.api.sap.com/ariba/api/purchase-orders/v1/sandbox/orders
+X-ARIBA-NETWORK-ID: AN02000000280
+APIKey: T4WSJv6bKugdwnZj5F01ezUwoAunWhDI
+
+###
+GET https://services.odata.org/V2/Northwind/Northwind.svc
+###
+
+GET https://vhcals4hci.dummy.nodomain:44300
+
+
+
+###
+
+GET http://vhcals4hci.dummy.nodomain:44300
+
+x-csrf-token: fetch
+
+###
+
+
+GET http://vhcals4hci.dummy.nodomain:44301/sap/opu/odata/sap/vhcals4hci.dummy.nodomain:44300/sap/opu/odata/sap/ZARIBA_PURCHASE_ORDERS_SRV/
+
+###
+GET http://10.124.145.7:44301/sap/opu/odata/sap/vhcals4hci.dummy.nodomain:44300/sap/opu/odata/sap/ZARIBA_PURCHASE_ORDERS_SRV/
+
+###
+
+GET https://vhcals4hci.dummy.nodomain:44300
+
+
+###
+GET http://localhost:4004/catalog/BenefitTypes
+
+###
+POST http://localhost:4004/catalog/dummyAction
+Content-Type: application/json
+

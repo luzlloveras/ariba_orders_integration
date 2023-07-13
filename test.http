@@ -1,0 +1,1 @@
+GET http://localhost:4004/order/Orders('DO240')?$select=documentNumber HTTP/1.1
