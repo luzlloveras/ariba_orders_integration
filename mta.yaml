@@ -69,9 +69,23 @@ modules:
       - aribaorderstosendga5.zip
       name: aribaorderstosendga5
       target-path: resources/
+    - artifacts:
+      - ordersintegration.zip
+      name: ordersintegration
+      target-path: resources/
 - name: aribaorderstosendga5
   type: html5
   path: app/ariba_orders_to_send_ga5
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: ordersintegration
+  type: html5
+  path: app/orders_integration
   build-parameters:
     build-result: dist
     builder: custom
