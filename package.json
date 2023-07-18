@@ -1,65 +1,69 @@
 {
-  "name": "ariba_last",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "type": "module",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@cap-js-community/odata-v2-adapter": "^1.10.5",
-    "@sap-cloud-sdk/http-client": "^3.1.1",
-    "@sap/approuter": "^14.1.1",
-    "@sap/cds": "^6",
-    "@sap/xssec": "^3",
-    "all": "^0.0.0",
-    "express": "^4",
-    "hdb": "^0.19.0",
-    "passport": "^0"
-  },
-  "devDependencies": {
-    "@sap/ux-specification": "^1.108.3",
-    "rimraf": "^3.0.2",
-    "sqlite3": "^5"
-  },
-  "scripts": {
-    "start": "cds-serve",
-    "watch-ariba_last": "cds watch --open ariba_last/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-ariba-integration-s4h": "cds watch --open ariba-integration-s4h/webapp/index.html?sap-ui-xx-viewCache=false",
-    "undeploy": "cf undeploy ariba_last --delete-services --delete-service-keys --delete-service-brokers",
-    "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
-    "start-debug": "cds run"
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "sql"
-      },
-      "AribaAPI": {
-        "kind": "rest",
-        "impl": "srv/external/AribaAPI.js",
-        "credentials": {
-          "url": "https://sandbox.api.sap.com/ariba/api/purchase-orders/v1/sandbox"
+    "name": "ariba_last",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "type": "module",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@cap-js-community/odata-v2-adapter": "^1.10.5",
+        "@sap-cloud-sdk/http-client": "^3.1.1",
+        "@sap/approuter": "^14.1.1",
+        "@sap/cds": "^6",
+        "@sap/xssec": "^3",
+        "all": "^0.0.0",
+        "express": "^4",
+        "hdb": "^0.19.0",
+        "passport": "^0"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.108.9",
+        "rimraf": "^3.0.2",
+        "sqlite3": "^5"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-ariba_last": "cds watch --open ariba_last/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-ariba-integration-s4h": "cds watch --open ariba-integration-s4h/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy ariba_last --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "start-debug": "cds run",
+        "watch-ariba_orders_to_send_ga5": "cds watch --open ariba_orders_to_send_ga5/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sql"
+            },
+            "AribaAPI": {
+                "kind": "rest",
+                "impl": "srv/external/AribaAPI.js",
+                "credentials": {
+                    "url": "https://sandbox.api.sap.com/ariba/api/purchase-orders/v1/sandbox"
+                }
+            },
+            "GA5": {
+                "kind": "odata-v2",
+                "model": "srv/external/ordersGA5",
+                "credentials": {
+                    "path": "/sap/opu/odata/sap/ZORDERS_SERVICE_BINDING",
+                    "destination": "GA5",
+                    "forwardAuthToken": true
+                }
+            },
+            "[production]": {
+                "auth": {
+                    "kind": "xsuaa"
+                },
+                "db": {
+                    "kind": "hana-cloud"
+                }
+            }
         }
-      },
-      "GA5": {
-        "kind": "odata-v2",
-        "model" : "srv/external/ordersGA5",
-        "credentials": {
-          "path": "/sap/opu/odata/sap/ZORDERS_SERVICE_BINDING",
-          "destination": "GA5",
-          "forwardAuthToken": true
-        }
-      },
-      "[production]": {
-        "auth": {
-          "kind": "xsuaa"
-        },
-        "db": {
-          "kind": "hana-cloud"
-        }
-      }
-    }
-  }
+    },
+    "sapux": [
+        "app/ariba_orders_to_send_ga5"
+    ]
 }
