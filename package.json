@@ -43,12 +43,12 @@
           "url": "https://sandbox.api.sap.com/ariba/api/purchase-orders/v1/sandbox"
         }
       },
-      "s4hanacal": {
+      "GA5": {
         "kind": "odata-v2",
-        "model" : "srv/external/s4hanacal",
+        "model" : "srv/external/ordersGA5",
         "credentials": {
-          "path": "/sap/opu/odata/sap/ZARIBA_PURCHASE_ORDERS_SRV",
-          "destination": "s4hLAC_S4H",
+          "path": "/sap/opu/odata/sap/ZORDERS_SERVICE_BINDING",
+          "destination": "GA5",
           "forwardAuthToken": true
         }
       },
@@ -61,9 +61,5 @@
         }
       }
     }
-  },
-  "sapux": [
-    "app/ariba_last",
-    "app/ariba-integration-s4h"
-  ]
+  }
 }

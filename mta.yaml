@@ -25,7 +25,6 @@ modules:
       - name: ariba_last-db
       - name: ariba_last-auth
       - name: ariba_last-destination
-      - name: ariba_last-connectivity
 
   - name: ariba_last-db-deployer
     type: hdb
@@ -115,9 +114,4 @@ resources:
       service: destination
       service-plan: lite
 
-  # Required for on-premise connectivity only
-  - name: ariba_last-connectivity
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: connectivity
-      service-plan: lite
+

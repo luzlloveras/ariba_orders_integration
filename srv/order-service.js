@@ -17,23 +17,5 @@ export default class OrderService extends cds.ApplicationService {
       console.log(response)
     })
 
-    // Leer Orders de S4H
-    const {
-      s4hanacal
-    } = this.entities
-
-    const s4service = await cds.connect.to('s4hanacal');    
-
-    this.on("READ", s4hanacal, async (req) => {
-        let response;
-
-        try {
-            response = s4service.get('/ZARIBA_PURCHASE_ORDERSet');
-            return response;
-        } catch (error) {
-            req.error(500, error.message)
-        }
-    })
-
   }
 }
