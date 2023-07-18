@@ -55,27 +55,6 @@ modules:
         existing_destinations_policy: update
   build-parameters:
     no-source: true
-- name: ariba_last
-  type: approuter.nodejs
-  path: app/
-  requires:
-  - name: srv-api
-    group: destinations
-    properties:
-      forwardAuthToken: true
-      name: srv-api
-      url: ~{srv-url}
-  - name: ariba_last-auth
-  - name: ariba_last-destination
-    group: destinations
-    properties:
-      forwardAuthToken: false
-      name: ui5
-      url: https://ui5.sap.com
-  parameters:
-    disk-quota: 1024M
-    keep-existing-routes: true
-    memory: 1024M
 - name: ariba_last-app-content
   type: com.sap.application.content
   path: .
