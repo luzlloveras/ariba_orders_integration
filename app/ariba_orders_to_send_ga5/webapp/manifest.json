@@ -99,7 +99,6 @@
             "css": []
         },
         "routing": {
-            "config": {},
             "routes": [
                 {
                     "pattern": ":?query:",
@@ -127,6 +126,22 @@
                                         "route": "Orders_AribaObjectPage"
                                     }
                                 }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "tableSettings": {
+                                        "selectionMode": "Multi"
+                                    },
+                                    "actions": {
+                                        "sendToGA5": {
+                                            "press": "aribaorderstosendga5.ext.sendToGA5.sendToGA5.sendToGA5",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "requiresSelection": true,
+                                            "text": "Send to GA5"
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -142,6 +157,11 @@
                         }
                     }
                 }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {}
             }
         }
     },
