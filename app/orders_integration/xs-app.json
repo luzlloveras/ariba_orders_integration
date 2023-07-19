@@ -5,7 +5,7 @@
     {
       "source": "^/order/(.*)$",
       "target": "/order/$1",
-      "destination": "ariba_last-app-srv",
+      "destination": "ariba_last-app-srv-api",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
